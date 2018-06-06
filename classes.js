@@ -23,13 +23,24 @@
     - age
   Each employee has the following methods:
     - makeWidget
-      - This returns a string equal to the employees first name + last name + the word widget
+      - This   a string equal to the employees first name + last name + the word widget
       - Example: "Dave Smith Widget"
 
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee {
+  constructor(first, last, email, age) {
+    this.first_name = first
+    this.last_name = last
+    this.email = email
+    this.age = age
+  }
+
+  makeWidget() {
+     return this.first_name + ' ' + this.last_name + ' ' + 'Widget'
+  }
+}
 
 
 
@@ -49,7 +60,24 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager {
+  constructor(first, last, email, age) {
+    this.first_name = first
+    this.last_name = last
+    this.email = email
+    this.age = age
+    this.reports = []
+  }
+
+  hire(employee){
+    this.reports.push(employee)
+  }
+
+  fire(index){
+    this.reports.splice(index, 1)
+  }
+
+}
 
 
 
@@ -75,7 +103,40 @@
   Call your new class ProgressiveManager
 */
 
-//Code Here
+class ProgressiveManager {
+  constructor(first, last, email, age) {
+    this.first_name = first
+    this.last_name = last
+    this.email = email
+    this.age = age
+    this.reports = []
+    this.title = 'Not a manager'
+    this.bonus = 0
+  }
+
+  hire(employee){
+    this.reports.push(employee)
+    if(this.reports.length < 4 ){
+      this.title = 'Barely Manager'
+    }else if(this.reports.length < 11 ){
+      this.title = 'Mostly Manager'
+    }else if(this.reports.length <51){
+      this.title = 'Manager'
+    }else if(this.reports.length < 101 ){
+      this.title = 'Manager Plus'
+    }else if(this.reports.length > 100){
+      this.title = 'Bestest Manager'
+    }
+    
+  }
+    
+  fire(index){
+    this.reports.splice(index, 1)
+    this.bonus += 100;
+    
+  }
+
+}
 
 
 
@@ -98,10 +159,32 @@
     - fixMachine
         - This function sets needs_reboot to true
     - reboot
-        - This function returns a function that is called when the machine is done rebooting
+        - This function  a function that is called when the machine is done rebooting
         - It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
 
-//Code Here
+class Machine {
+  constructor(){
+    widgets_made_count: 0
+    wear_and_tear_count: 0
+    needs_reboot: false
+  }
+
+  makeWidgets(num){
+    widgets_made_count += num;
+    if(widgets_made_count >=50){
+      wear_and_tear_count++
+    }
+
+  }
+
+  fixMachine(){
+    this.needs_reboot = true;
+  }
+
+  reboot(){
+
+  }
+}
 
 
