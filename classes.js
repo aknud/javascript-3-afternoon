@@ -38,7 +38,7 @@ class Employee {
   }
 
   makeWidget() {
-     return this.first_name + ' ' + this.last_name + ' ' + 'Widget'
+    return this.first_name + ' ' + this.last_name + ' ' + 'Widget'
   }
 }
 
@@ -69,11 +69,11 @@ class Manager {
     this.reports = []
   }
 
-  hire(employee){
+  hire(employee) {
     this.reports.push(employee)
   }
 
-  fire(index){
+  fire(index) {
     this.reports.splice(index, 1)
   }
 
@@ -114,26 +114,26 @@ class ProgressiveManager {
     this.bonus = 0
   }
 
-  hire(employee){
+  hire(employee) {
     this.reports.push(employee)
-    if(this.reports.length < 4 ){
+    if (this.reports.length < 4) {
       this.title = 'Barely Manager'
-    }else if(this.reports.length < 11 ){
+    } else if (this.reports.length < 11) {
       this.title = 'Mostly Manager'
-    }else if(this.reports.length <51){
+    } else if (this.reports.length < 51) {
       this.title = 'Manager'
-    }else if(this.reports.length < 101 ){
+    } else if (this.reports.length < 101) {
       this.title = 'Manager Plus'
-    }else if(this.reports.length > 100){
+    } else if (this.reports.length > 100) {
       this.title = 'Bestest Manager'
     }
-    
+
   }
-    
-  fire(index){
+
+  fire(index) {
     this.reports.splice(index, 1)
     this.bonus += 100;
-    
+
   }
 
 }
@@ -164,27 +164,29 @@ class ProgressiveManager {
 */
 
 class Machine {
-  constructor(){
-    widgets_made_count: 0
-    wear_and_tear_count: 0
-    needs_reboot: false
+  constructor() {
+    this.widgets_made_count = 0
+    this.wear_and_tear_count = 0
+    this.needs_reboot = false
   }
 
-  makeWidgets(num){
-    widgets_made_count += num;
-    if(widgets_made_count >=50){
-      wear_and_tear_count++
-    }
-
+  makeWidgets(num) {
+    this.widgets_made_count += num;
+    this.wear_and_tear_count += num / 50;
   }
 
-  fixMachine(){
+  fixMachine() {
     this.needs_reboot = true;
   }
 
-  reboot(){
+  reboot() {
+    return () => {
+    this.wear_and_tear_count -= 10;
+      this.needs_reboot = false;
+    }
 
   }
 }
+
 
 
