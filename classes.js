@@ -60,12 +60,9 @@ class Employee {
   Call your new class Manager
 */
 
-class Manager {
+class Manager extends Employee{
   constructor(first, last, email, age) {
-    this.first_name = first
-    this.last_name = last
-    this.email = email
-    this.age = age
+    super(first, last, email, age)
     this.reports = []
   }
 
@@ -103,35 +100,24 @@ class Manager {
   Call your new class ProgressiveManager
 */
 
-class ProgressiveManager {
+class ProgressiveManager extends Manager {
   constructor(first, last, email, age) {
-    this.first_name = first
-    this.last_name = last
-    this.email = email
-    this.age = age
-    this.reports = []
+    super(first, last, email, age)
     this.title = 'Not a manager'
     this.bonus = 0
   }
 
   hire(employee) {
-    this.reports.push(employee)
-    if (this.reports.length < 4) {
-      this.title = 'Barely Manager'
-    } else if (this.reports.length < 11) {
-      this.title = 'Mostly Manager'
-    } else if (this.reports.length < 51) {
-      this.title = 'Manager'
-    } else if (this.reports.length < 101) {
-      this.title = 'Manager Plus'
-    } else if (this.reports.length > 100) {
-      this.title = 'Bestest Manager'
-    }
-
+    super.hire(employee)
+    if (this.reports.length < 4) this.title = 'Barely Manager'
+    else if (this.reports.length < 11) this.title = 'Mostly Manager'
+    else if (this.reports.length < 51) this.title = 'Manager'
+    else if (this.reports.length < 101) this.title = 'Manager Plus'
+    else if (this.reports.length > 100) this.title = 'Bestest Manager'
   }
 
   fire(index) {
-    this.reports.splice(index, 1)
+    super.fire(index)
     this.bonus += 100;
 
   }
